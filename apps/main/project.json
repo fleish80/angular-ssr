@@ -8,24 +8,15 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/main/browser",
         "index": "apps/main/src/index.html",
         "main": "apps/main/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/main/tsconfig.app.json",
-        "assets": [
-          "apps/main/src/favicon.ico",
-          "apps/main/src/assets"
-        ],
-        "styles": [
-          "apps/main/src/styles.scss"
-        ],
+        "assets": ["apps/main/src/favicon.ico", "apps/main/src/assets"],
+        "styles": ["apps/main/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -59,10 +50,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "main:build:production"
+          "buildTarget": "main:build:production"
         },
         "development": {
-          "browserTarget": "main:build:development"
+          "buildTarget": "main:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,35 +61,18 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "main:build"
+        "buildTarget": "main:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
-      "options": {
-        "lintFilePatterns": [
-          "apps/main/**/*.ts",
-          "apps/main/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/main/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "apps/main/jest.config.ts"
       }
     },
     "serve-static": {
@@ -129,7 +103,7 @@
       "defaultConfiguration": "production"
     },
     "serve-ssr": {
-      "executor": "@nguniversal/builders:ssr-dev-server",
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
       "configurations": {
         "development": {
           "browserTarget": "main:build:development",
@@ -143,11 +117,9 @@
       "defaultConfiguration": "development"
     },
     "prerender": {
-      "executor": "@nguniversal/builders:prerender",
+      "executor": "@angular-devkit/build-angular:prerender",
       "options": {
-        "routes": [
-          "/"
-        ]
+        "routes": ["/"]
       },
       "configurations": {
         "production": {

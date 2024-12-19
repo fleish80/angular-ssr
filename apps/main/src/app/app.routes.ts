@@ -1,4 +1,4 @@
-import { ResolveFn, Route } from '@angular/router';
+import { Route } from '@angular/router';
 import { map, timer } from 'rxjs';
 
 export const appRoutes: Route[] = [
@@ -14,7 +14,7 @@ export const appRoutes: Route[] = [
   {
     path: 'about',
     loadComponent: () => import('./about.component'),
-    resolve: {resolver: () => timer(3000).pipe(map(() => true))},
+    resolve: { resolver: () => timer(3000).pipe(map(() => true)) },
   },
   {
     path: 'todos',

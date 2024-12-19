@@ -4,10 +4,9 @@ import { TodoModel } from './todo.model';
 import { TodosService } from './todo.service';
 
 @Component({
-  selector: 'df-todos',
-  standalone: true,
-  imports: [NgFor],
-  template: `
+    selector: 'df-todos',
+    imports: [NgFor],
+    template: `
     <h2>Todos</h2>
     <ul>
       <li *ngFor="let todo of todos()">
@@ -23,7 +22,7 @@ import { TodosService } from './todo.service';
       </li>
     </ul>
   `,
-  styles: [],
+    styles: []
 })
 export default class TodosComponent implements OnInit {
   todos = signal<TodoModel[]>([]);
